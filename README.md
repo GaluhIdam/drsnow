@@ -17,3 +17,5 @@ Website Application ini merupakan website dinamis yang dapat digunakan untuk pro
 3. Bootstrap 5.0
 4. DataTables 1.10.25
 5. MySQL 5.5
+
+### Web Developer : Galuh Idam

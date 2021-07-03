@@ -61,7 +61,17 @@
                                             </div>
                                             <div class="col-sm-9 text-secondary">
                                                 <select class="form-control <?= ($validation->hasError('nama_kategori')) ? 'is-invalid' : ''; ?>" name="nama_kategori" aria-label="Default select example">
-                                                    <option selected value="<?= esc($id_produk['nama_kategori']) ?>"><?= esc($id_produk['nama_kategori']) ?></option>
+                                                    <?php
+                                                    $a = $id_produk['nama_kategori'];
+                                                    if ($a = $id_produk['nama_kategori']) {
+                                                        echo $b = $id_produk['nama_kategori'];
+                                                        echo $c = '';
+                                                    } else {
+                                                        echo $b = 'Pilih Kategori';
+                                                        echo $c = 'disabled';
+                                                    }
+                                                    ?>
+                                                    <option selected <?= $c; ?> value="<?= $a; ?>"><?= $b; ?></option>
                                                     <?php if (!empty($id_kategori) && is_array($id_kategori)) : ?>
                                                         <?php foreach ($id_kategori as $r) : ?>
                                                             <option value="<?= esc($r['nama_kategori']); ?>"><?= esc($r['nama_kategori']); ?></option>
@@ -127,7 +137,7 @@
                             </div>
                         </div>
                         <div class="col-sm-12 mt-4 text-right">
-                            <a class="btn btn-secondary " href="/Admin/viewProduct/<?= $id_produk['id_produk']; ?>">Back</a>
+                            <a class="btn btn-secondary " href="/Admin/Product">Back</a>
                             <button class="btn btn-primary" type="submit">Update</button>
                         </div>
                     </div>

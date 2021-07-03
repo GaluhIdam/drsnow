@@ -23,17 +23,8 @@ class M_Category extends Model
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('tb_kategoriproduk'); // Produces: SELECT * FROM mytable
-        $query   = $builder->orderBy('created_at', 'DESC');
+        $query   = $builder->orderBy('nama_kategori', 'ASC');
         $query = $builder->get();
-
-        return $query->getResult('array');
-    }
-
-    public function Getdata($id_kategori)
-    {
-        $db      = \Config\Database::connect();
-        $builder = $db->table('tb_kategoriproduk');
-        $query = $builder->getWhere(['id_kategori' => $id_kategori]);
 
         return $query->getResult('array');
     }

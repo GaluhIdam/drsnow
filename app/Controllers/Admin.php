@@ -372,23 +372,6 @@ class Admin extends BaseController
         return redirect()->to('/Admin/Product');
     }
 
-    public function viewProduct($id_produk)
-    {
-        $data = [
-            'title' => 'Produk',
-            'exam' => 'Daftar Produk',
-            'validation' => \Config\Services::validation(),
-            'id_produk' => $this->M_Product->getProduk($id_produk),
-        ];
-
-
-        if (empty($data['id_produk'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data Produk' . $id_produk . 'tidak ditemukan.');
-        }
-
-        return view('cmsview/viewproduct', $data);
-    }
-
     public function editProduct($id_produk)
     {
         $data = [
@@ -596,17 +579,16 @@ class Admin extends BaseController
             'icon' => [
                 'rules' => 'max_size[icon,1024]|is_image[icon]|mime_in[icon,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'max_size' => 'gambar marketplace maksimal 1 mb',
+                    'max_size' => 'gambar icon maksimal 1 mb',
                     'is_image' => 'file yg diupload bukan gambar',
                     'mime_in' => 'file yg diupload bukan gambar'
                 ]
-            ],
+            ]
 
         ])) {
-
-            // return redirect()->to('/Admin/editCategory/' . $this->request->getPost('id_kategori'))->withInput();
+            // dd($this->request->getPost());
+            return redirect()->to('/Admin/editCategory/' . $this->request->getPost('id_kategori'))->withInput();
         }
-        dd($this->request->getPost());
 
         $fileicon = $this->request->getFile('icon');
         //cek file
@@ -616,9 +598,9 @@ class Admin extends BaseController
             //generate nama file random
             $namaicon = $fileicon->getName();
             //pindahkan gambar
-            $fileicon->move('assets/img/marketplace', $namaicon);
+            $fileicon->move('assets/img/icon', $namaicon);
             // hapus file lama
-            unlink('assets/img/marketplace/' . $this->request->getPost('gambarLama'));
+            unlink('assets/img/icon/' . $this->request->getPost('gambarLama'));
         }
 
         $this->M_Category->save([
@@ -757,13 +739,12 @@ class Admin extends BaseController
                 'errors' => [
                     'required' => 'nama marketplace harus terisi'
                 ]
-            ],
+            ]
 
         ])) {
-            // dd($this->request->getPost());
+
             return redirect()->to('/Admin/editMarketplace/' . $this->request->getPost('id_marketplace'))->withInput();
         }
-        dd($this->request->getPost());
         //take a image
         $fileimage_marketplace = $this->request->getFile('image_marketplace');
         //cek file

@@ -40,7 +40,6 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Icon Marketplace</th>
                             <th>Nama Marketplace</th>
                             <th>Link Marketplace</th>
                             <th>Terdaftar</th>
@@ -52,7 +51,6 @@
                         <?php foreach ($id_marketplace as $row) : ?>
                             <tr>
                                 <td><?= $i++; ?>.</td>
-                                <td><img src="/assets/img/marketplace/<?= esc($row['image_marketplace']) ?>" class="img-fluid" alt="image" width="100px"></td>
                                 <td><?= esc($row['nama_marketplace']) ?></td>
                                 <td><?= esc($row['link_marketplace']) ?></td>
                                 <td><?= date('l, d F Y | H:i:s', strtotime(esc($row['created_at']))) ?></td>

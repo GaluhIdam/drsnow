@@ -1,14 +1,6 @@
 # Web App Brand Profile
 Website Application ini merupakan website dinamis yang dapat digunakan untuk profil dari suatu merk produk. Web App mudah digunakan, dimodifikasi, dan diupdate bagi usernya.
 
-### Fitur Web App:
-
-1.
-
-2.
-
-3.
-
 
 ### Teknologi Web App :
 
